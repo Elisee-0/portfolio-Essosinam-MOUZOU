@@ -1,0 +1,531 @@
+/* --- VARIABLES DE COULEUR (Bleu nuit & Violet brun) --- */
+:root {
+    --night-dark: #0E1330;      /* Bleu nuit très foncé - fond principal */
+    --night-medium: #2B2F63;    /* Bleu nuit moyen - formes, dégradés */
+    --plum: #8C5E6D;            /* Violet brun - accent principal */
+    --plum-light: #B98A99;      /* Violet brun clair - hover, tons doux */
+    --plum-tint: rgba(140, 94, 109, 0.16); /* Fond léger teinté */
+    --text-color: #4B4458;      /* Gris-violet doux pour le corps du texte */
+    --bg-page: #F7F5FA;         /* Fond de page - blanc légèrement lavande */
+}
+
+/* --- Style général --- */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-page);
+    color: #1E1B2E;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: var(--plum);
+    color: #FFFFFF;
+}
+
+/* --- Barre de Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--night-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-name {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--plum-light);
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--plum-light);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--plum-light);
+}
+
+.nav-links a.active {
+    color: var(--plum-light);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* --- Section Hero (Introduction avec la photo) --- */
+#hero {
+    background: linear-gradient(135deg, var(--night-dark) 0%, var(--night-medium) 55%, #4A3450 100%);
+    padding: 80px 5% 100px 5%;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.hero-content {
+    flex: 2;
+}
+
+.hero-title {
+    font-size: 3em;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.2em;
+    color: #D9D3E3;
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 14px 40px;
+    background-color: var(--plum);
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 700;
+    transition: all 0.3s;
+    box-shadow: 0 4px 14px rgba(140, 94, 109, 0.5);
+}
+
+.hero-button:hover {
+    background-color: var(--plum-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(140, 94, 109, 0.6);
+}
+
+/* --- Style de la Photo de Profil dans l'entête --- */
+.hero-photo-container {
+    flex: 1;
+    text-align: center;
+    min-width: 250px;
+    max-width: 350px;
+    margin-left: 3rem;
+}
+
+.hero-photo-circle {
+    width: 100%;
+    height: 350px;
+    max-width: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid var(--plum-light);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero-photo-circle:hover {
+    transform: scale(1.05);
+}
+
+/* --- Mise en page des sections internes (Cartes) --- */
+main {
+    padding: 40px 0;
+}
+
+main > section {
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+    padding: 30px 40px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(14, 19, 48, 0.08);
+    border-left: 5px solid var(--plum);
+}
+
+h2 {
+    color: var(--night-dark);
+    font-size: 2.2em;
+    font-weight: 800;
+    padding-bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: var(--night-dark);
+    font-weight: 700;
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+/* --- Compétences --- */
+.columns {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.columns ul {
+    flex: 1;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.columns ul li {
+    padding: 12px 0 12px 30px;
+    position: relative;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.columns ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--plum);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* --- Galerie de Projets Graphiques --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(14, 19, 48, 0.1);
+    transition: all 0.3s ease-in-out;
+    border: 3px solid transparent;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(14, 19, 48, 0.18);
+    border-color: var(--plum);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* --- Cartes d'expérience (parcours professionnel) --- */
+.experience-card {
+    height: auto;
+    padding: 24px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.experience-card:hover {
+    transform: translateY(-6px);
+}
+
+.experience-period {
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--night-dark);
+    background-color: var(--plum-tint);
+    padding: 4px 12px;
+    border-radius: 999px;
+    width: fit-content;
+    margin-bottom: 6px;
+}
+
+.experience-card h3 {
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.experience-org {
+    font-weight: 600;
+    color: var(--plum);
+    margin: 0;
+    font-size: 0.95em;
+}
+
+.experience-card p:not(.experience-org) {
+    font-size: 0.92em;
+}
+
+/* --- Vidéos et Projets Réalisés --- */
+.projet-video {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    padding: 30px;
+    background: #F4F1F8;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(14, 19, 48, 0.06);
+    border-left: 4px solid var(--plum);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #000;
+}
+
+section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+section ul li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+section ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--plum);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+section ul li a {
+    color: var(--plum);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+section ul li a:hover {
+    color: var(--night-medium);
+    text-decoration: underline;
+}
+
+/* --- Section Contact --- */
+section#contact ul li::before {
+    content: '★';
+    font-size: 1em;
+}
+
+section#contact ul li a {
+    color: var(--night-medium);
+}
+
+section#contact ul li a:hover {
+    color: var(--plum);
+}
+
+/* Bouton Télécharger CV */
+.download-cv {
+    display: inline-block;
+    margin: 30px 0 40px 0;
+    padding: 14px 40px;
+    background-color: var(--night-dark);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(14, 19, 48, 0.4);
+}
+
+.download-cv:hover {
+    background-color: var(--night-medium);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(14, 19, 48, 0.5);
+}
+
+/* --- Formulaire --- */
+form {
+    margin-top: 30px;
+    background: #F4F1F8;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #DDD1E3;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 10px;
+    border: 2px solid #D7C9DE;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: inherit;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    color: #1E1B2E;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--plum);
+    box-shadow: 0 0 0 3px rgba(140, 94, 109, 0.2);
+}
+
+form button {
+    margin-top: 20px;
+    background-color: var(--plum);
+    color: #FFFFFF;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.05em;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(140, 94, 109, 0.35);
+}
+
+form button:hover {
+    background-color: var(--plum-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(140, 94, 109, 0.45);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: var(--night-dark);
+    color: #FFFFFF;
+    margin-top: 60px;
+}
+
+footer p {
+    margin: 5px 0;
+    color: #FFFFFF;
+}
+
+/* --- Media Queries (Responsive) --- */
+@media (max-width: 900px) {
+    /* Navigation */
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+        gap: 40px;
+    }
+
+    .hero-photo-container {
+        order: -1;
+        margin: 0 auto;
+        max-width: 200px;
+        min-width: 150px;
+    }
+
+    .hero-photo-circle {
+        height: 200px;
+        border-width: 4px;
+    }
+
+    .hero-title {
+        font-size: 2em;
+    }
+
+    /* Sections Générales */
+    main > section {
+        padding: 30px 20px;
+    }
+
+    .columns {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+
+    .gallery-item {
+        height: 300px;
+    }
+}
