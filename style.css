@@ -1,12 +1,25 @@
-/* --- VARIABLES DE COULEUR (Bleu nuit & Violet brun) --- */
+/* --- VARIABLES DE COULEUR (Bleu vif — remplacées en JS si une autre palette est choisie) --- */
 :root {
-    --night-dark: #0E1330;      /* Bleu nuit très foncé - fond principal */
-    --night-medium: #2B2F63;    /* Bleu nuit moyen - formes, dégradés */
-    --plum: #8C5E6D;            /* Violet brun - accent principal */
-    --plum-light: #B98A99;      /* Violet brun clair - hover, tons doux */
-    --plum-tint: rgba(140, 94, 109, 0.16); /* Fond léger teinté */
-    --text-color: #4B4458;      /* Gris-violet doux pour le corps du texte */
-    --bg-page: #F7F5FA;         /* Fond de page - blanc légèrement lavande */
+    --night-dark: #071A33;      /* Bleu nuit profond - fond principal */
+    --night-medium: #0E3A66;    /* Bleu moyen - formes, dégradés */
+    --plum: #2E7CF6;            /* Bleu vif - accent principal, accrocheur */
+    --plum-light: #5B9DFF;      /* Bleu vif clair - hover */
+    --plum-tint: rgba(var(--plum-rgb), 0.16); /* Fond léger teinté */
+    --text-color: #2B3A4A;      /* Gris-bleu pour le corps du texte */
+    --bg-page: #F5F8FC;         /* Fond de page - blanc légèrement bleuté */
+    --night-dark-rgb: 7, 26, 51;
+    --plum-rgb: 46, 124, 246;
+    --hero-accent-end: #123458;
+    --panel-bg: #EDF3FA;
+    --panel-border: #D3E1EF;
+    --input-border: #C3D4E5;
+}
+
+/* Transition douce de toutes les couleurs lors d'un changement de style */
+body, .navbar, #hero, main > section, .experience-period, .experience-org,
+.hero-button, .download-cv, form button, form input, form textarea,
+.gallery-item, footer, .nav-links a, .columns ul li::before, section ul li::before {
+    transition: background-color .5s ease, color .5s ease, border-color .5s ease, box-shadow .5s ease;
 }
 
 /* --- Style général --- */
@@ -91,7 +104,11 @@ body {
 
 /* --- Section Hero (Introduction avec la photo) --- */
 #hero {
-    background: linear-gradient(135deg, var(--night-dark) 0%, var(--night-medium) 55%, #4A3450 100%);
+    background:
+        linear-gradient(to bottom, rgba(7,26,51,0.15) 0%, rgba(7,26,51,0.75) 100%),
+        url('images/All.jpeg');
+    background-size: cover;
+    background-position: center;
     padding: 80px 5% 100px 5%;
 }
 
@@ -117,6 +134,15 @@ body {
     line-height: 1.2;
 }
 
+.hero-tagline {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--plum-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+}
+
 .hero-subtitle {
     font-size: 1.2em;
     color: #D9D3E3;
@@ -134,13 +160,13 @@ body {
     font-size: 1em;
     font-weight: 700;
     transition: all 0.3s;
-    box-shadow: 0 4px 14px rgba(140, 94, 109, 0.5);
+    box-shadow: 0 4px 14px rgba(var(--plum-rgb), 0.5);
 }
 
 .hero-button:hover {
     background-color: var(--plum-light);
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(140, 94, 109, 0.6);
+    box-shadow: 0 6px 18px rgba(var(--plum-rgb), 0.6);
 }
 
 /* --- Style de la Photo de Profil dans l'entête --- */
@@ -178,7 +204,7 @@ main > section {
     padding: 30px 40px;
     background-color: #FFFFFF;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(14, 19, 48, 0.08);
+    box-shadow: 0 10px 30px rgba(var(--night-dark-rgb), 0.08);
     border-left: 5px solid var(--plum);
 }
 
@@ -244,14 +270,14 @@ p {
     height: 250px;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(14, 19, 48, 0.1);
+    box-shadow: 0 4px 12px rgba(var(--night-dark-rgb), 0.1);
     transition: all 0.3s ease-in-out;
     border: 3px solid transparent;
 }
 
 .gallery-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(14, 19, 48, 0.18);
+    box-shadow: 0 12px 25px rgba(var(--night-dark-rgb), 0.18);
     border-color: var(--plum);
 }
 
@@ -315,9 +341,9 @@ p {
     max-width: 800px;
     margin: 0 auto 50px auto;
     padding: 30px;
-    background: #F4F1F8;
+    background: var(--panel-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(14, 19, 48, 0.06);
+    box-shadow: 0 4px 16px rgba(var(--night-dark-rgb), 0.06);
     border-left: 4px solid var(--plum);
 }
 
@@ -399,22 +425,22 @@ section#contact ul li a:hover {
     border-radius: 8px;
     font-weight: 700;
     transition: all 0.3s;
-    box-shadow: 0 4px 12px rgba(14, 19, 48, 0.4);
+    box-shadow: 0 4px 12px rgba(var(--night-dark-rgb), 0.4);
 }
 
 .download-cv:hover {
     background-color: var(--night-medium);
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(14, 19, 48, 0.5);
+    box-shadow: 0 8px 20px rgba(var(--night-dark-rgb), 0.5);
 }
 
 /* --- Formulaire --- */
 form {
     margin-top: 30px;
-    background: #F4F1F8;
+    background: var(--panel-bg);
     padding: 30px;
     border-radius: 12px;
-    border: 1px solid #DDD1E3;
+    border: 1px solid var(--panel-border);
 }
 
 form input,
@@ -422,7 +448,7 @@ form textarea {
     width: 100%;
     padding: 12px 15px;
     margin-top: 10px;
-    border: 2px solid #D7C9DE;
+    border: 2px solid var(--input-border);
     border-radius: 8px;
     font-size: 1em;
     font-family: inherit;
@@ -436,7 +462,7 @@ form input:focus,
 form textarea:focus {
     outline: none;
     border-color: var(--plum);
-    box-shadow: 0 0 0 3px rgba(140, 94, 109, 0.2);
+    box-shadow: 0 0 0 3px rgba(var(--plum-rgb), 0.2);
 }
 
 form button {
@@ -450,13 +476,13 @@ form button {
     font-weight: 700;
     font-size: 1.05em;
     transition: all 0.3s;
-    box-shadow: 0 4px 12px rgba(140, 94, 109, 0.35);
+    box-shadow: 0 4px 12px rgba(var(--plum-rgb), 0.35);
 }
 
 form button:hover {
     background-color: var(--plum-light);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(140, 94, 109, 0.45);
+    box-shadow: 0 6px 16px rgba(var(--plum-rgb), 0.45);
 }
 
 /* --- Footer --- */
@@ -496,15 +522,23 @@ footer p {
     }
 
     .hero-photo-container {
-        order: -1;
-        margin: 0 auto;
-        max-width: 200px;
-        min-width: 150px;
+        flex: 0 0 180px;
+        text-align: center;
+        min-width: 180px;
+        max-width: 180px;
+        margin-left: 1.5rem;
+        margin-top: 6px;
     }
 
     .hero-photo-circle {
-        height: 200px;
-        border-width: 4px;
+        width: 180px;
+        height: 180px;
+        max-width: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 6px solid var(--plum-light);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease-in-out;
     }
 
     .hero-title {
@@ -528,4 +562,164 @@ footer p {
     .gallery-item {
         height: 300px;
     }
+}
+
+/* --- Bouton de changement de style (auto-design) --- */
+.style-switcher-btn {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: none;
+    background-color: var(--night-dark);
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(var(--night-dark-rgb), 0.4);
+    z-index: 999;
+    transition: background-color .4s ease, transform .2s ease, box-shadow .4s ease;
+}
+
+.style-switcher-btn:hover {
+    background-color: var(--plum);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(var(--plum-rgb), 0.45);
+}
+
+.style-switcher-btn .swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--night-dark), var(--plum));
+    border: 2px solid rgba(255,255,255,0.6);
+}
+
+@media (max-width: 900px) {
+    .style-switcher-btn {
+        left: 16px;
+        bottom: 16px;
+        padding: 10px 16px;
+        font-size: 0.8em;
+    }
+}
+
+/* --- Grille Projets & Actions concrètes (photos/vidéos) --- */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-top: 10px;
+}
+
+.media-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(var(--night-dark-rgb), 0.1);
+    transition: transform .3s ease, box-shadow .3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.media-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(var(--night-dark-rgb), 0.18);
+}
+
+.media-frame {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: var(--panel-bg);
+    overflow: hidden;
+    position: relative;
+}
+
+.media-frame img,
+.media-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background-color: var(--panel-bg);
+}
+
+.media-frame video {
+    object-fit: contain;
+    background-color: #000;
+}
+
+.media-caption {
+    padding: 18px 20px 22px;
+    border-top: 3px solid var(--plum);
+}
+
+.media-caption h3 {
+    font-size: 1.05em;
+    margin: 0 0 6px 0;
+}
+
+.media-caption p {
+    font-size: 0.92em;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Fond image + dégradé pour "À propos de moi" --- */
+main > section#about {
+    background:
+        linear-gradient(to bottom, rgba(7,26,51,0.82) 0%, rgba(7,26,51,0.90) 100%),
+        url('images/Scout.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
+}
+
+main > section#about p {
+    color: #E8ECF2;
+}
+
+main > section#about h2 {
+    color: #FFFFFF;
+}
+
+/* --- Fond image + dégradé pour "Mon parcours professionnel" --- */
+main > section#parcours {
+    background:
+        linear-gradient(to bottom, rgba(7,26,51,0.82) 0%, rgba(7,26,51,0.90) 100%),
+        url('images/st.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
+}
+
+main > section#parcours h2 {
+    color: #FFFFFF;
+}
+/* --- Fond image + dégradé pour "Compétences" --- */
+main > section#skills {
+    background:
+        linear-gradient(to bottom, rgba(7,26,51,0.82) 0%, rgba(7,26,51,0.90) 100%),
+        url('images/Deutsch.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
+}
+
+main > section#skills h2 {
+    color: #FFFFFF;
+}
+
+main > section#skills .columns ul li {
+    color: #E8ECF2;
 }
